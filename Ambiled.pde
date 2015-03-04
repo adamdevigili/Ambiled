@@ -1,3 +1,5 @@
+import g4p_controls.*;
+
 import beads.*;
 import org.jaudiolibs.beads.*;
 
@@ -24,7 +26,9 @@ void setup(){
   // Set up the serial connection Note: May need to change serial port number
   port = new Serial(this, Serial.list()[1],9600);
   // Initalize the window size
-  size(100, 100);
+  size(400, 300, JAVA2D);
+  createGUI();
+  customGUI();
   // Try to create robot 
   try{
     robby = new Robot();
@@ -231,16 +235,9 @@ void ambilight()
   }
 }
 
-void dayNightCycle()
-{
-    Date date = new Date();
-    SimpleDateFormat simpDate;
-
-    simpDate = new SimpleDateFormat("kk:mm:ss");
-    System.out.println(simpDate.format(date));
-  
-}
-
+/*
+General function used to set the lights in an RGB format
+*/
 void setAll(float r, float g, float b)
 {
   for(int i = 0; i < 5; i++)
@@ -261,7 +258,6 @@ void setAll(float r, float g, float b)
   
     delay(500);
   }
-    exit();
 }
 
 void ambilightMovie()
@@ -440,6 +436,9 @@ void ambilightMovie()
   
 }
 
+/*
+Cycle through RGBY on each strip
+*/
 void rainbowLoop()
 {
   float r, g, b;
@@ -605,6 +604,10 @@ void rainbowLoop()
   
   }
 }
+
+/*
+Fade the rainbow in a circular pattern throughout the strips
+*/
 
 void rainbowFadeLoop()
 {
@@ -785,6 +788,9 @@ void rainbowFadeLoop()
   
 }
 
+/*
+Simulate a breathing pattern with the strips
+*/
 void breathe(float red, float green, float blue)
 {
   
@@ -850,6 +856,9 @@ void breathe(float red, float green, float blue)
   
 }
 
+/*
+Simulate a heartbeat pattern with the strips
+*/
 void heartbeat(float red, float green, float blue)
 {
   int step1 = 25;
@@ -977,7 +986,9 @@ void heartbeat(float red, float green, float blue)
   
 }
 
-
+/*
+Only actiavte the bottom LEDs, leaving the top off
+*/
 void bottom(float r, float g, float b)
 {
   port.write(0xff); //write marker (0xff) for synchronization
@@ -1143,6 +1154,9 @@ void audioVisualizerRainbow()
   }
 }
 
+/*
+Function that is meant to run all day. Updates every minute and adjusts the blue value based on a parabola that peaks around 2pm
+*/
 void dayCycle()
 {
   while(true)
@@ -1180,11 +1194,12 @@ void dayCycle()
 
 // Draw Loop
 void draw(){
-  
+
+  background(230);
   //heartbeat(250, 0, 0);
   //breathe(250, 0, 0);
   //rainbowLoop();
-  setAll(50, 0, 0);
+  //setAll(50, 0, 250);
   //dayCycle();
   //rainbowFadeLoop();
   //ambilight();
@@ -1196,4 +1211,12 @@ void draw(){
   //audioVisualizerRainbow();
   
 }
+
+public void customGUI()
+{
+  
+}
+
+
+
 
