@@ -1,3 +1,5 @@
+import com.onformative.yahooweather.*;
+
 import g4p_controls.*;
 
 import beads.*;
@@ -240,8 +242,8 @@ General function used to set the lights in an RGB format
 */
 void setAll(float r, float g, float b)
 {
-  for(int i = 0; i < 5; i++)
-  {
+  //for(int i = 0; i < 5; i++)
+ // {
     port.write(0xff); //write marker (0xff) for synchronization
     port.write((byte)(g)); //write red value
     port.write((byte)(r)); //write green value
@@ -256,8 +258,8 @@ void setAll(float r, float g, float b)
     port.write((byte)(r)); //write green value
     port.write((byte)(g)); //write blue value
   
-    delay(500);
-  }
+    //delay(50);
+ // }
 }
 
 void ambilightMovie()

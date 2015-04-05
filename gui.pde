@@ -31,6 +31,10 @@ public void blueSlider_change1(GSlider source, GEvent event) { //_CODE_:blueSlid
   setAll(r, g, b);
 } //_CODE_:blueSlider:765498:
 
+public void rainbowFadeButton_click1(GButton source, GEvent event) { //_CODE_:rainbowFadeButton:835400:
+  thread("rainbowFadeLoop");
+} //_CODE_:rainbowFadeButton:835400:
+
 
 
 // Create all the GUI controls. 
@@ -65,6 +69,9 @@ public void createGUI(){
   blueSlider.setLocalColorScheme(GCScheme.BLUE_SCHEME);
   blueSlider.setOpaque(false);
   blueSlider.addEventHandler(this, "blueSlider_change1");
+  rainbowFadeButton = new GButton(this, 20, 200, 80, 30);
+  rainbowFadeButton.setText("Rainbow Fade");
+  rainbowFadeButton.addEventHandler(this, "rainbowFadeButton_click1");
 }
 
 // Variable declarations 
@@ -72,4 +79,5 @@ public void createGUI(){
 GSlider redSlider; 
 GSlider greenSlider; 
 GSlider blueSlider; 
+GButton rainbowFadeButton; 
 
